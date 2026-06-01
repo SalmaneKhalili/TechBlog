@@ -1,0 +1,259 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --muted: #666666;
+  --border: #e5e5e5;
+  --surface: #ffffff;
+  --accent2: #7a9ab5;
+  --callout-error: #b05c5c;
+}
+
+.dark {
+  --background: #0e0c0a;
+  --foreground: #e8e6e0;
+  --muted: #999999;
+  --border: #2a2a2a;
+  --surface: #141210;
+  --accent2: #7a9ab5;
+  --callout-error: #b05c5c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --font-sans: var(--font-bricolage);
+  --font-mono: var(--font-dm-mono);
+  --font-serif: var(--font-serif);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  transition: background 0.2s, color 0.2s;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.18;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  margin-bottom: 24px;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-top: 2.5em;
+  margin-bottom: 0.75em;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+.site-name {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0;
+  letter-spacing: normal;
+  line-height: normal;
+}
+
+.site-name a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.eyebrow,
+.section-label {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.prose {
+  max-width: 65ch;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.prose p {
+  margin-bottom: 1.25em;
+}
+
+.prose a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  color: var(--foreground);
+}
+
+.prose a:hover {
+  color: var(--muted);
+}
+
+.prose strong {
+  font-weight: 600;
+}
+
+.prose ul,
+.prose ol {
+  margin-bottom: 1.25em;
+  padding-left: 1.5em;
+}
+
+.prose li {
+  margin-bottom: 0.35em;
+}
+
+.prose ul li::marker {
+  color: var(--muted);
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--border);
+  padding-left: 1em;
+  margin: 1.5em 0;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2em 0;
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1.5em 0;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.9rem;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid var(--border);
+  padding: 0.6em 0.8em;
+  text-align: left;
+}
+
+.prose th {
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--border) 30%, transparent);
+}
+
+.prose code {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85em;
+}
+
+.prose pre {
+  background: color-mix(in srgb, var(--foreground) 4%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1em 1.25em;
+  overflow-x: auto;
+  margin: 1.5em 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+.prose p code {
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+.callout-title {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+.callout {
+  border-top: 2px solid var(--accent2);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  padding: 18px 22px;
+  margin: 32px 0;
+}
+
+.callout.error {
+  border-top-color: var(--callout-error);
+}
+
+.hljs-keyword,
+.hljs-literal,
+.hljs-selector-tag { color: #e8613a; }
+
+.hljs-string,
+.hljs-doctag { color: #9bb87a; }
+
+.hljs-comment { color: #6a6860; font-style: italic; }
+
+.hljs-number { color: #d4a76a; }
+
+.hljs-type,
+.hljs-built_in { color: #7a9ab5; }
+
+.hljs-title,
+.hljs-title.class_ { color: #b8a9d4; }
+
+.hljs-attr,
+.hljs-attribute { color: #e8c87a; }
+
+.hljs-meta { color: #8a8880; }
+
+.hljs-variable { color: var(--foreground); }
+
+.hljs-addition { color: #9bb87a; }
+.hljs-deletion { color: #e05555; }
+
+.nav-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
